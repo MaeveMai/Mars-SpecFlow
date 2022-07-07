@@ -39,63 +39,33 @@ Scenario: 4 delete existing language record
 	When I delete existing language record
 	Then the language record should disappear from the language module
 
-@Skill
-Scenario Outline: create skill record with details
-	Given I logged into Mars portal successfully 
-	When I navigate to skills Module
-	And I add new '<skill>' record
-	Then the '<skill>' record should be added successfully
-
-	Examples: 
-	| skill       |
-	| Programming |
-	| Writing     |
-
-@Skill 
-Scenario Outline: edit skill record with details
-	Given I logged into Mars portal successfully 
-	When I navigate to skills Module
-	And I update '<skill>'on existing skill record
-	Then the skill record should have updated '<skill>'
-
-	Examples: 
-	| skill              |
-	| Automation Testing |
-	| Swimming           |
-
-@Skill 
-Scenario: delete existing skill record
-	Given I logged into Mars portal successfully 
-	When I navigate to skills Module
-	And I delete existing skill record
-	Then the skill record should disappear from the skills module
 
 @Education
-Scenario Outline: create education record with details
+Scenario Outline: 5 create education record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to education Module
-	And I add new education record with '<University Name>' and '<Degree>'
-	Then the education record should be added successfully with correct '<University Name>' and '<Degree>'
+	And I add new education record with '<UniversityName>' and '<Degree>'
+	Then the education record should be added successfully with correct '<UniversityName>' and '<Degree>'
 
 	Examples: 
-	| University Name          | Degree            |
-	| University of Canterbury | Bachelor's Degree |
-	| Massey University        | Master's degree   |
+	| UniversityName           | Degree   |
+	| University of Canterbury | Bachelor |
+	| Massey University        | Master   |
 
 @Education 
-Scenario Outline: edit education record with details
+Scenario Outline: 6 edit education record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to education Module
-	And I update '<University Name>' and '<Degree>' on existing education record
-	Then the education record should have updated '<University Name>' and '<Degree>'
+	And I update '<UniversityName>' and '<Degree>' on existing education record
+	Then the education record should have updated '<UniversityName>' and '<Degree>'
 
 	Examples: 
-	| University Name                   | Degree              |
-	| Victoria University of Wellington | Postgraduate degree |
-	| The University of Auckland        | Master's degree     |
+	| UniversityName                    | Degree       |
+	| Victoria University of Wellington | Postgraduate |
+	| The University of Auckland        | Master       |
 
 @Education 
-Scenario: delete existing education record
+Scenario: 7 delete existing education record
 	Given I logged into Mars portal successfully 
 	When I navigate to education Module
 	And I delete existing education record
@@ -130,3 +100,34 @@ Scenario: delete existing certification record
 	When I navigate to certification Module
 	And I delete existing certification record
 	Then the certification record should disappear from the certification module
+
+@Skill
+Scenario Outline: create skill record with details
+	Given I logged into Mars portal successfully 
+	When I navigate to skills Module
+	And I add new '<skill>' record in skill module
+	Then the '<skill>' record should be added successfully in skill module
+
+	Examples: 
+	| skill       |
+	| Programming |
+	| Writing     |
+
+@Skill 
+Scenario Outline: edit skill record with details
+	Given I logged into Mars portal successfully 
+	When I navigate to skills Module
+	And I update '<skill>'on existing skill record
+	Then the skill record should have updated '<skill>'
+
+	Examples: 
+	| skill              |
+	| Automation Testing |
+	| Swimming           |
+
+@Skill 
+Scenario: delete existing skill record
+	Given I logged into Mars portal successfully 
+	When I navigate to skills Module
+	And I delete existing skill record
+	Then the skill record should disappear from the skills module

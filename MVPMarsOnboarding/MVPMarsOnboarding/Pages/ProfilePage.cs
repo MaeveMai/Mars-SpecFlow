@@ -18,9 +18,11 @@ namespace MVPMarsOnboarding.Pages
             return HiUser.Text;
         }
 
-        public void GoToSkillModule()
+        public void GoToEducationModule(IWebDriver driver)
         {
-
+            WaitHelpers.WaitToBeClickable(driver, "XPath", "//div/section[2]/div/div/div/div[3]/form/div[1]/a[3]", 5);
+            IWebElement EducationModule = driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
+            EducationModule.Click();
         }
     }
 }
