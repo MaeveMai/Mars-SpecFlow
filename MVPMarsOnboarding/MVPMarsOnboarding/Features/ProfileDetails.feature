@@ -9,11 +9,25 @@ Scenario: A Login to mars portal
 	Then The profile page should be presented
 
 @PersonalDetail
-Scenario: B Update personal details
+Scenario: B1 Add personal details
     Given I logged into Mars portal successfully
 	When I input my first name and last name
 	And  I click Availability, Hours, Earn Target and input Descriptioon
+	Then The profile page details should be added
+
+@PersonalDetail
+Scenario: B2 Update personal details
+    Given I logged into Mars portal successfully
+	When I Update my first name and last name
+	And  I update Availability, Hours, Earn Target and Descriptioon
 	Then The profile page details should be updated
+
+@PersonalDetail
+Scenario: B3 Add personal details
+    Given I logged into Mars portal successfully
+	When I delete my first name and last name
+	And  I delete Descriptioon
+	Then The profile page details should be deleted
 
 @Language
 Scenario Outline: C1 create language record with details
