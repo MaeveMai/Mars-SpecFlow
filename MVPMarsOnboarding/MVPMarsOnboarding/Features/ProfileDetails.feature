@@ -1,18 +1,25 @@
-﻿Feature: SellerManageProfileDetails
+﻿Feature: Manage profile details
 As a seller
-I would like to create, edit and delete Profile Details including language, skills, education and certifications
-So that I can manage seller's Profile Detail successfully and people seeking for some skills can look into my details.
+I would like to create, edit and delete Language, education, and certification record in Profile page
+So that I can manage profile successfully and people seeking for my info can look into my Profile
 
 @Login
-Scenario: 1 Login to mars portal
-    Given I Open mars portal
-	When I input correct credential
+Scenario: A Login to mars portal
+    Given I login mars portal
 	Then The profile page should be presented
 
+@PersonalDetail
+Scenario: B Update personal details
+    Given I logged into Mars portal successfully
+	When I input my first name and last name
+	And  I click Availability, Hours, Earn Target and input Descriptioon
+	Then The profile page details should be updated
+
 @Language
-Scenario Outline: 2 create language record with details
+Scenario Outline: C1 create language record with details
 	Given I logged into Mars portal successfully
-	When I add new '<language>' records on lauguange module
+	When I navigate to language module
+	And I add new '<language>' records on lauguange module
 	Then the '<language>' records should be added in language module successfully
 
 	Examples: 
@@ -22,9 +29,10 @@ Scenario Outline: 2 create language record with details
 
 
 @Language
-Scenario Outline: 3 edit language record with details
+Scenario Outline: C2 edit language record with details
 	Given I logged into Mars portal successfully 
-	When I update '<Language>'on existing language record
+	When I navigate to language module
+	And I update '<Language>'on existing language record
 	Then the language record should have updated '<Language>'
 
 	Examples: 
@@ -34,14 +42,15 @@ Scenario Outline: 3 edit language record with details
 
 
 @Language
-Scenario: 4 delete existing language record
+Scenario: C3 delete existing language record
 	Given I logged into Mars portal successfully 
-	When I delete existing language record
+	When I navigate to language module
+	And I delete existing language record
 	Then the language record should disappear from the language module
 
 
 @Education
-Scenario Outline: 5 create education record with details
+Scenario Outline: D1 create education record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to education Module
 	And I add new education record with '<UniversityName>' and '<Degree>'
@@ -52,8 +61,9 @@ Scenario Outline: 5 create education record with details
 	| University of Canterbury | Bachelor |
 	| Massey University        | Master   |
 
+
 @Education 
-Scenario Outline: 6 edit education record with details
+Scenario Outline: D2 edit education record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to education Module
 	And I update '<UniversityName>' and '<Degree>' on existing education record
@@ -64,45 +74,50 @@ Scenario Outline: 6 edit education record with details
 	| Victoria University of Wellington | Postgraduate |
 	| The University of Auckland        | Master       |
 
+
 @Education 
-Scenario: 7 delete existing education record
+Scenario: D3 delete existing education record
 	Given I logged into Mars portal successfully 
 	When I navigate to education Module
 	And I delete existing education record
 	Then the education record should disappear from the education module
 
+
 @Certifications 
-Scenario Outline: create certification record with details
+Scenario Outline: E1 create certification record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to certification Module
-	And I add new certification record with '<Certification Name>' and '<Certificated From>'
-	Then the certification record should be added successfully with correct '<Certification Name>' and '<Certificated From>'
+	And I add new certification record with '<CertificationName>' and '<CertificatedFrom>'
+	Then the certification record should be added successfully with correct '<CertificationName>' and '<CertificatedFrom>'
 
 	Examples: 
-	| Certification Name | Certificated From  |
-	| Best Programmer    | Industry Connect   |
-	| Best lecturers     | Lincoln University |
+	| CertificationName | CertificatedFrom   |
+	| Best Programmer   | Industry Connect   |
+	| Best lecturers    | Lincoln University |
+
 
 @Certifications 
-Scenario Outline: edit certification record with details
+Scenario Outline: E2 edit certification record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to certification Module
-	And I update '<Certification Name>' and '<Certificated From>' on existing certification record
-	Then the certification record should have updated '<Certification Name>' and '<Certificated From>' 
+	And I update '<CertificationName>' and '<CertificatedFrom>' on existing certification record
+	Then the certification record should have updated '<CertificationName>' and '<CertificatedFrom>' 
 	Examples: 
-	| Certification Name | Certificated From        |
-	| Best Tester        | MVP Studio               |
-	| Best Tutors        | University of Canterbury |
+	| CertificationName | CertificatedFrom         |
+	| Best Tester       | MVP Studio               |
+	| Best Tutors       | University of Canterbury |
+
 
 @Certifications 
-Scenario: delete existing certification record
+Scenario: E3 delete existing certification record
 	Given I logged into Mars portal successfully 
 	When I navigate to certification Module
 	And I delete existing certification record
 	Then the certification record should disappear from the certification module
 
+
 @Skill
-Scenario Outline: create skill record with details
+Scenario Outline: F1 create skill record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to skills Module
 	And I add new '<skill>' record in skill module
@@ -114,7 +129,7 @@ Scenario Outline: create skill record with details
 	| Writing     |
 
 @Skill 
-Scenario Outline: edit skill record with details
+Scenario Outline: F2 edit skill record with details
 	Given I logged into Mars portal successfully 
 	When I navigate to skills Module
 	And I update '<skill>'on existing skill record
@@ -126,7 +141,7 @@ Scenario Outline: edit skill record with details
 	| Swimming           |
 
 @Skill 
-Scenario: delete existing skill record
+Scenario: F3 delete existing skill record
 	Given I logged into Mars portal successfully 
 	When I navigate to skills Module
 	And I delete existing skill record

@@ -9,20 +9,16 @@ using TechTalk.SpecFlow;
 namespace MVPMarsOnboarding.StepDefinitions
 {
     [Binding]
-    public class SellerManageProfileDetailsStepDefinitions : CommonDriver
+    public class ProfileDetailsStepDefinitions : CommonDriver
     {
-        [Given(@"I Open mars portal")]
-        public void GivenIOpenMarsPortal()
+
+        [Given(@"I login mars portal")]
+        public void GivenILoginMarsPortal()
         {
+            //open chrom browser
             driver = new ChromeDriver();
-            LoginPage loginPageObj = new LoginPage();
-            loginPageObj.OpenMarsPortal(driver);
-        }
 
-
-        [When(@"I input correct credential")]
-        public void WhenIInputCorrectCredential()
-        {
+            // log in steps
             LoginPage loginPageObj = new LoginPage();
             loginPageObj.LoginSteps(driver);
         }
@@ -30,23 +26,34 @@ namespace MVPMarsOnboarding.StepDefinitions
         [Then(@"The profile page should be presented")]
         public void ThenTheProfilePageShouldBePresented()
         {
+            //Check if the login was successful
             ProfilePage profilePageObj = new ProfilePage();
             string HiUser = profilePageObj.GetHiUser(driver);
+
             Assert.That(HiUser == "Hi Maeve", "Hi User not match");
 
-            driver.Close();
         }
-
 
         [Given(@"I logged into Mars portal successfully")]
         public void GivenILoggedIntoMarsPortalSuccessfully()
         {
+            //open chrom browser
             driver = new ChromeDriver();
+
+            //log in mars portal
             LoginPage loginPageObj = new LoginPage();
-            loginPageObj.OpenMarsPortal(driver);
             loginPageObj.LoginSteps(driver);
 
         }
+
+
+        [When(@"I navigate to language module")]
+        public void WhenINavigateToLanguageModule()
+        {
+            ProfilePage profilePageObj = new ProfilePage();
+            profilePageObj.GoToLanguageModule(driver);
+        }
+
 
         [When(@"I add new '([^']*)' records on lauguange module")]
         public void WhenIAddNewRecordsOnLauguangeModule(string p0)
@@ -58,12 +65,11 @@ namespace MVPMarsOnboarding.StepDefinitions
         [Then(@"the '([^']*)' records should be added in language module successfully")]
         public void ThenTheRecordsShouldBeAddedInLanguageModuleSuccessfully(string p0)
         {
+            //Check if the language was created successful
             LanguageModule LanguageModuleObj = new LanguageModule();
             string NewLanguage = LanguageModuleObj.GetNewLanguage(driver);
 
-            Assert.That(NewLanguage == p0, "New language do not match");
-
-            driver.Close();
+            Assert.That(NewLanguage == p0, "added language do not match");
 
         }
 
@@ -78,12 +84,11 @@ namespace MVPMarsOnboarding.StepDefinitions
         [Then(@"the language record should have updated '([^']*)'")]
         public void ThenTheLanguageRecordShouldHaveUpdated(string p0)
         {
+            //Check if the language was updated successful
             LanguageModule LanguageModuleObj = new LanguageModule();
             string NewLanguage = LanguageModuleObj.GetNewLanguage(driver);
 
             Assert.That(NewLanguage == p0, "Updated language do not match");
-
-            driver.Close();
 
         }
 
@@ -97,12 +102,12 @@ namespace MVPMarsOnboarding.StepDefinitions
         [Then(@"the language record should disappear from the language module")]
         public void ThenTheLanguageRecordShouldDisappearFromTheLanguageModule()
         {
+            //Check if the language was deleted successful
             LanguageModule languageModuleObj = new LanguageModule();
             String NewLanguage = languageModuleObj.GetNewLanguage(driver);
 
-            Assert.That(NewLanguage != "Japanese",NewLanguage);
+            Assert.That(NewLanguage != "Japanese", "language should be deleted still existing");
 
-            driver.Close();
         }
 
 
@@ -123,6 +128,7 @@ namespace MVPMarsOnboarding.StepDefinitions
         [Then(@"the education record should be added successfully with correct '([^']*)' and '([^']*)'")]
         public void ThenNewEducationRecordShouldBeAddedSuccessfully(string p0, string p1)
         {
+            //Check if the education was created successful
             EducationModule educationModuleObj = new EducationModule();
             string NewCountry = educationModuleObj.GetNewCountryName(driver);
             string NewUniName = educationModuleObj.GetNewUniversityName(driver);
@@ -136,7 +142,6 @@ namespace MVPMarsOnboarding.StepDefinitions
             Assert.That(NewDegree == p1, "Actual degree do not match");
             Assert.That(NewGraduationYear == "2019", "Actual Graduation Year do not match");
 
-            driver.Close();
         }
 
 
@@ -151,6 +156,7 @@ namespace MVPMarsOnboarding.StepDefinitions
         [Then(@"the education record should have updated '([^']*)' and '([^']*)'")]
         public void ThenTheEducationRecordShouldHaveUpdated(string p0, string p1)
         {
+            //Check if the education was updated successful
             EducationModule educationModuleObj = new EducationModule();
             string NewUniName = educationModuleObj.GetNewUniversityName(driver);
             string NewCountry = educationModuleObj.GetNewCountryName(driver);
@@ -158,13 +164,12 @@ namespace MVPMarsOnboarding.StepDefinitions
             string NewDegree = educationModuleObj.GetNewDegree(driver);
             string NewGraduationYear = educationModuleObj.GetNewGraduationYear(driver);
             
-            Assert.That(NewUniName == p0, "Actual name do not match");
-            Assert.That(NewCountry == "New Zealand", "Actual Country do not match");
-            Assert.That(NewTitle == "PHD", "Actual title do not match");
-            Assert.That(NewDegree == p1, "Actual degree do not match");
-            Assert.That(NewGraduationYear == "2019", "Actual Graduation Year do not match");
+            Assert.That(NewUniName == p0, "updated name do not match");
+            Assert.That(NewCountry == "New Zealand", "updated Country do not match");
+            Assert.That(NewTitle == "PHD", "updated title do not match");
+            Assert.That(NewDegree == p1, "updated degree do not match");
+            Assert.That(NewGraduationYear == "2019", "updated Graduation Year do not match");
 
-            driver.Close();
         }
 
         [When(@"I delete existing education record")]
@@ -177,99 +182,88 @@ namespace MVPMarsOnboarding.StepDefinitions
         [Then(@"the education record should disappear from the education module")]
         public void ThenTheEducationRecordShouldDisappearFromTheEducationModule()
         {
+            //Check if the education was deleted successful
             EducationModule educationModuleObj = new EducationModule();
             string NewUniName = educationModuleObj.GetNewUniversityName(driver);
             string NewDegree = educationModuleObj.GetNewDegree(driver);
 
-            Assert.That(NewUniName != "The University of Auckland", NewUniName);
-            Assert.That(NewDegree != "Master", "Deleted degree record still existing");
+            Assert.That(NewUniName != "The University of Auckland", "Universiyu name should be deleted still existing");
+            Assert.That(NewDegree != "Master", "degree should be deleted still existing");
 
-            driver.Close();
         }
 
-        //[When(@"I navigate to certification Module")]
-        //public void WhenINavigateToCertificationModule()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [When(@"I navigate to certification Module")]
+        public void WhenINavigateToCertificationModule()
+        {
+            ProfilePage profilePageObj = new ProfilePage();
+            profilePageObj.GoToCertificationModule(driver);
+        }
 
-        //[When(@"I add new certification record with '([^']*)' and '([^']*)'")]
-        //public void WhenIAddNewCertificationRecordWithAnd(string p0, string p1)
-        //{
-        //    throw new PendingStepException();
-        //}
+        [When(@"I add new certification record with '([^']*)' and '([^']*)'")]
+        public void WhenIAddNewCertificationRecordWithAnd(string p0, string p1)
+        {
+            CertificationModule certificationModuleObj = new CertificationModule();
+            certificationModuleObj.AddNewCertificate(driver, p0, p1);
+        }
 
-        //[Then(@"the certification record should be added successfully with correct '([^']*)' and '([^']*)'")]
-        //public void ThenTheCertificationRecordShouldBeAddedSuccessfullyWithCorrectAnd(string p0, string p1)
-        //{
-        //    throw new PendingStepException();
-        //}
+        [Then(@"the certification record should be added successfully with correct '([^']*)' and '([^']*)'")]
+        public void ThenTheCertificationRecordShouldBeAddedSuccessfullyWithCorrectAnd(string p0, string p1)
+        {
+            //Check if the certification was created successful
+            CertificationModule certificationModuleObj = new CertificationModule();
+            string NewCertificateName = certificationModuleObj.GetNewCertificateName(driver);
+            string NewCertifiedFrom = certificationModuleObj.GetNewCertifiedFrom(driver);
+            string NewCertifiedYear = certificationModuleObj.GetNewCertifiedYear(driver);
 
-        //[When(@"I update '([^']*)' and '([^']*)' on existing certification record")]
-        //public void WhenIUpdateAndOnExistingCertificationRecord(string p0, string p1)
-        //{
-        //    throw new PendingStepException();
-        //}
+            Assert.That(NewCertificateName == p0, "New Certificate Name do not match");
+            Assert.That(NewCertifiedFrom == p1, "New Certified from do not match");
+            Assert.That(NewCertifiedYear == "2020", "New Certified Year do not match");
+        }
 
-        //[Then(@"the certification record should have updated '([^']*)' and '([^']*)'")]
-        //public void ThenTheCertificationRecordShouldHaveUpdated(string p0, string p1)
-        //{
-        //    throw new PendingStepException();
-        //}
+        [When(@"I update '([^']*)' and '([^']*)' on existing certification record")]
+        public void WhenIUpdateAndOnExistingCertificationRecord(string p0, string p1)
+        {
+            CertificationModule certificationModuleObj = new CertificationModule();
+            certificationModuleObj.EditExistingCertificate(driver, p0, p1);
+        }
 
-        //[When(@"I delete existing certification record")]
-        //public void WhenIDeleteExistingCertificationRecord()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [Then(@"the certification record should have updated '([^']*)' and '([^']*)'")]
+        public void ThenTheCertificationRecordShouldHaveUpdated(string p0, string p1)
+        {
+            //Check if the certification was updated successful
+            CertificationModule certificationModuleObj = new CertificationModule();
+            string NewCertificateName = certificationModuleObj.GetNewCertificateName(driver);
+            string NewCertifiedFrom = certificationModuleObj.GetNewCertifiedFrom(driver);
+            string NewCertifiedYear = certificationModuleObj.GetNewCertifiedYear(driver);
 
-        //[Then(@"the certification record should disappear from the certification module")]
-        //public void ThenTheCertificationRecordShouldDisappearFromTheCertificationModule()
-        //{
-        //    throw new PendingStepException();
-        //}
-        //[When(@"I navigate to skills Module")]
-        //public void WhenINavigateToSkillsModule()
-        //{
-        //    throw new PendingStepException();
-        //}
+            Assert.That(NewCertificateName == p0, "updated Certificate Name do not match");
+            Assert.That(NewCertifiedFrom == p1, "updated Certified from do not match");
+            Assert.That(NewCertifiedYear == "2020", "updated Certified Year do not match");
+        }
 
-        //[When(@"I add new '([^']*)' record in skill module")]
-        //public void WhenIAddNewRecordInSkillModule(string programming)
-        //{
-        //    throw new PendingStepException();
-        //}
+        [When(@"I delete existing certification record")]
+        public void WhenIDeleteExistingCertificationRecord()
+        {
+            CertificationModule certificationModuleObj = new CertificationModule();
+            certificationModuleObj.DeleteExistingCertificate(driver);
+        }
 
+        [Then(@"the certification record should disappear from the certification module")]
+        public void ThenTheCertificationRecordShouldDisappearFromTheCertificationModule()
+        {
+            //check if the certification record deleted successful
+            CertificationModule certificationModuleObj = new CertificationModule();
+            string NewCertificateName = certificationModuleObj.GetNewCertificateName(driver);
+            string NewCertifiedFrom = certificationModuleObj.GetNewCertifiedFrom(driver);
 
-        //[Then(@"the '([^']*)' record should be added successfully in skill module")]
-        //public void ThenTheRecordShouldBeAddedSuccessfullyInSkillModule(string programming)
-        //{
-        //    throw new PendingStepException();
-        //}
+            Assert.That(NewCertificateName != "Best Tutors", "Certificate Name should be deleted still existing");
+            Assert.That(NewCertifiedFrom != "University of Canterbury", "Certified From should be deleted still existing");
+        }
 
-
-        //[When(@"I update '([^']*)'on existing skill record")]
-        //public void WhenIUpdateOnExistingSkillRecord(string p0)
-        //{
-        //    throw new PendingStepException();
-        //}
-
-        //[Then(@"the skill record should have updated '([^']*)'")]
-        //public void ThenTheSkillRecordShouldHaveUpdated(string p0)
-        //{
-        //    throw new PendingStepException();
-        //}
-
-        //[When(@"I delete existing skill record")]
-        //public void WhenIDeleteExistingSkillRecord()
-        //{
-        //    throw new PendingStepException();
-        //}
-
-        //[Then(@"the skill record should disappear from the skills module")]
-        //public void ThenTheSkillRecordShouldDisappearFromTheSkillsModule()
-        //{
-        //    throw new PendingStepException();
-        //}
+        [After]
+        public void Dispose()
+        {
+            driver.Close();
+        }
     }
 }

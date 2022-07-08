@@ -20,25 +20,24 @@ namespace MVPMarsOnboarding.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("SellerManageProfileDetails")]
-    public partial class SellerManageProfileDetailsFeature
+    [NUnit.Framework.DescriptionAttribute("Manage profile details")]
+    public partial class ManageProfileDetailsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "SellerManageProfileDetails.feature"
+#line 1 "ProfileDetails.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SellerManageProfileDetails", "As a seller\r\nI would like to create, edit and delete Profile Details including la" +
-                    "nguage, skills, education and certifications\r\nSo that I can manage seller\'s Prof" +
-                    "ile Detail successfully and people seeking for some skills can look into my deta" +
-                    "ils.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Manage profile details", "As a seller\r\nI would like to create, edit and delete Language, education, and cer" +
+                    "tification record in Profile page\r\nSo that I can manage profile successfully and" +
+                    " people seeking for my info can look into my Profile", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -77,14 +76,14 @@ namespace MVPMarsOnboarding.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("1 Login to mars portal")]
+        [NUnit.Framework.DescriptionAttribute("A Login to mars portal")]
         [NUnit.Framework.CategoryAttribute("Login")]
-        public virtual void _1LoginToMarsPortal()
+        public virtual void ALoginToMarsPortal()
         {
             string[] tagsOfScenario = new string[] {
                     "Login"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Login to mars portal", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A Login to mars portal", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -106,12 +105,9 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
-    testRunner.Given("I Open mars portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I login mars portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
- testRunner.When("I input correct credential", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
  testRunner.Then("The profile page should be presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -119,11 +115,56 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("2 create language record with details")]
+        [NUnit.Framework.DescriptionAttribute("B Update personal details")]
+        [NUnit.Framework.CategoryAttribute("PersonalDetail")]
+        public virtual void BUpdatePersonalDetails()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "PersonalDetail"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("B Update personal details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 12
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 13
+    testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 14
+ testRunner.When("I input my first name and last name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 15
+ testRunner.And("I click Availability, Hours, Earn Target and input Descriptioon", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 16
+ testRunner.Then("The profile page details should be updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("C1 create language record with details")]
         [NUnit.Framework.CategoryAttribute("Language")]
         [NUnit.Framework.TestCaseAttribute("Mandarin", null)]
         [NUnit.Framework.TestCaseAttribute("Spanish", null)]
-        public virtual void _2CreateLanguageRecordWithDetails(string language, string[] exampleTags)
+        public virtual void C1CreateLanguageRecordWithDetails(string language, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Language"};
@@ -134,8 +175,8 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("language", language);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 create language record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("C1 create language record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -155,13 +196,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 20
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
- testRunner.When(string.Format("I add new \'{0}\' records on lauguange module", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 21
+ testRunner.When("I navigate to language module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 22
+ testRunner.And(string.Format("I add new \'{0}\' records on lauguange module", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 23
  testRunner.Then(string.Format("the \'{0}\' records should be added in language module successfully", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -169,11 +213,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("3 edit language record with details")]
+        [NUnit.Framework.DescriptionAttribute("C2 edit language record with details")]
         [NUnit.Framework.CategoryAttribute("Language")]
         [NUnit.Framework.TestCaseAttribute("French", null)]
         [NUnit.Framework.TestCaseAttribute("Japanese", null)]
-        public virtual void _3EditLanguageRecordWithDetails(string language, string[] exampleTags)
+        public virtual void C2EditLanguageRecordWithDetails(string language, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Language"};
@@ -184,8 +228,8 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Language", language);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 edit language record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 25
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("C2 edit language record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -205,13 +249,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 26
+#line 33
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 27
- testRunner.When(string.Format("I update \'{0}\'on existing language record", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+ testRunner.When("I navigate to language module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 35
+ testRunner.And(string.Format("I update \'{0}\'on existing language record", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 36
  testRunner.Then(string.Format("the language record should have updated \'{0}\'", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -219,15 +266,15 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("4 delete existing language record")]
+        [NUnit.Framework.DescriptionAttribute("C3 delete existing language record")]
         [NUnit.Framework.CategoryAttribute("Language")]
-        public virtual void _4DeleteExistingLanguageRecord()
+        public virtual void C3DeleteExistingLanguageRecord()
         {
             string[] tagsOfScenario = new string[] {
                     "Language"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4 delete existing language record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 37
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("C3 delete existing language record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 45
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -247,13 +294,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 38
+#line 46
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 39
- testRunner.When("I delete existing language record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 47
+ testRunner.When("I navigate to language module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 40
+#line 48
+ testRunner.And("I delete existing language record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 49
  testRunner.Then("the language record should disappear from the language module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -261,11 +311,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("5 create education record with details")]
+        [NUnit.Framework.DescriptionAttribute("D1 create education record with details")]
         [NUnit.Framework.CategoryAttribute("Education")]
         [NUnit.Framework.TestCaseAttribute("University of Canterbury", "Bachelor", null)]
         [NUnit.Framework.TestCaseAttribute("Massey University", "Master", null)]
-        public virtual void _5CreateEducationRecordWithDetails(string universityName, string degree, string[] exampleTags)
+        public virtual void D1CreateEducationRecordWithDetails(string universityName, string degree, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Education"};
@@ -277,8 +327,8 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("UniversityName", universityName);
             argumentsOfScenario.Add("Degree", degree);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5 create education record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 44
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("D1 create education record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -298,16 +348,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 45
+#line 54
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 46
+#line 55
  testRunner.When("I navigate to education Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 47
+#line 56
  testRunner.And(string.Format("I add new education record with \'{0}\' and \'{1}\'", universityName, degree), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 48
+#line 57
  testRunner.Then(string.Format("the education record should be added successfully with correct \'{0}\' and \'{1}\'", universityName, degree), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -315,11 +365,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("6 edit education record with details")]
+        [NUnit.Framework.DescriptionAttribute("D2 edit education record with details")]
         [NUnit.Framework.CategoryAttribute("Education")]
         [NUnit.Framework.TestCaseAttribute("Victoria University of Wellington", "Postgraduate", null)]
         [NUnit.Framework.TestCaseAttribute("The University of Auckland", "Master", null)]
-        public virtual void _6EditEducationRecordWithDetails(string universityName, string degree, string[] exampleTags)
+        public virtual void D2EditEducationRecordWithDetails(string universityName, string degree, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Education"};
@@ -331,8 +381,8 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("UniversityName", universityName);
             argumentsOfScenario.Add("Degree", degree);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("6 edit education record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 56
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("D2 edit education record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 66
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -352,16 +402,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 57
+#line 67
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 58
+#line 68
  testRunner.When("I navigate to education Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 59
+#line 69
  testRunner.And(string.Format("I update \'{0}\' and \'{1}\' on existing education record", universityName, degree), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 60
+#line 70
  testRunner.Then(string.Format("the education record should have updated \'{0}\' and \'{1}\'", universityName, degree), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -369,15 +419,15 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("7 delete existing education record")]
+        [NUnit.Framework.DescriptionAttribute("D3 delete existing education record")]
         [NUnit.Framework.CategoryAttribute("Education")]
-        public virtual void _7DeleteExistingEducationRecord()
+        public virtual void D3DeleteExistingEducationRecord()
         {
             string[] tagsOfScenario = new string[] {
                     "Education"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("7 delete existing education record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 68
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("D3 delete existing education record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 79
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -397,16 +447,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 69
+#line 80
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 70
+#line 81
  testRunner.When("I navigate to education Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 71
+#line 82
  testRunner.And("I delete existing education record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 72
+#line 83
  testRunner.Then("the education record should disappear from the education module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -414,11 +464,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("create certification record with details")]
+        [NUnit.Framework.DescriptionAttribute("E1 create certification record with details")]
         [NUnit.Framework.CategoryAttribute("Certifications")]
         [NUnit.Framework.TestCaseAttribute("Best Programmer", "Industry Connect", null)]
         [NUnit.Framework.TestCaseAttribute("Best lecturers", "Lincoln University", null)]
-        public virtual void CreateCertificationRecordWithDetails(string certificationName, string certificatedFrom, string[] exampleTags)
+        public virtual void E1CreateCertificationRecordWithDetails(string certificationName, string certificatedFrom, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Certifications"};
@@ -428,64 +478,9 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Certification Name", certificationName);
-            argumentsOfScenario.Add("Certificated From", certificatedFrom);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("create certification record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 75
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 76
- testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 77
- testRunner.When("I navigate to certification Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 78
- testRunner.And(string.Format("I add new certification record with \'{0}\' and \'{1}\'", certificationName, certificatedFrom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 79
- testRunner.Then(string.Format("the certification record should be added successfully with correct \'{0}\' and \'{1}" +
-                            "\'", certificationName, certificatedFrom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("edit certification record with details")]
-        [NUnit.Framework.CategoryAttribute("Certifications")]
-        [NUnit.Framework.TestCaseAttribute("Best Tester", "MVP Studio", null)]
-        [NUnit.Framework.TestCaseAttribute("Best Tutors", "University of Canterbury", null)]
-        public virtual void EditCertificationRecordWithDetails(string certificationName, string certificatedFrom, string[] exampleTags)
-        {
-            string[] @__tags = new string[] {
-                    "Certifications"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Certification Name", certificationName);
-            argumentsOfScenario.Add("Certificated From", certificatedFrom);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("edit certification record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("CertificationName", certificationName);
+            argumentsOfScenario.Add("CertificatedFrom", certificatedFrom);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("E1 create certification record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 87
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -513,9 +508,64 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I navigate to certification Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 90
- testRunner.And(string.Format("I update \'{0}\' and \'{1}\' on existing certification record", certificationName, certificatedFrom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I add new certification record with \'{0}\' and \'{1}\'", certificationName, certificatedFrom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 91
+ testRunner.Then(string.Format("the certification record should be added successfully with correct \'{0}\' and \'{1}" +
+                            "\'", certificationName, certificatedFrom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("E2 edit certification record with details")]
+        [NUnit.Framework.CategoryAttribute("Certifications")]
+        [NUnit.Framework.TestCaseAttribute("Best Tester", "MVP Studio", null)]
+        [NUnit.Framework.TestCaseAttribute("Best Tutors", "University of Canterbury", null)]
+        public virtual void E2EditCertificationRecordWithDetails(string certificationName, string certificatedFrom, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "Certifications"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("CertificationName", certificationName);
+            argumentsOfScenario.Add("CertificatedFrom", certificatedFrom);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("E2 edit certification record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 100
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 101
+ testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 102
+ testRunner.When("I navigate to certification Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 103
+ testRunner.And(string.Format("I update \'{0}\' and \'{1}\' on existing certification record", certificationName, certificatedFrom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 104
  testRunner.Then(string.Format("the certification record should have updated \'{0}\' and \'{1}\'", certificationName, certificatedFrom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -523,15 +573,15 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("delete existing certification record")]
+        [NUnit.Framework.DescriptionAttribute("E3 delete existing certification record")]
         [NUnit.Framework.CategoryAttribute("Certifications")]
-        public virtual void DeleteExistingCertificationRecord()
+        public virtual void E3DeleteExistingCertificationRecord()
         {
             string[] tagsOfScenario = new string[] {
                     "Certifications"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("delete existing certification record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 98
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("E3 delete existing certification record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 112
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -551,16 +601,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 99
+#line 113
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 100
+#line 114
  testRunner.When("I navigate to certification Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 101
+#line 115
  testRunner.And("I delete existing certification record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 102
+#line 116
  testRunner.Then("the certification record should disappear from the certification module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -568,11 +618,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("create skill record with details")]
+        [NUnit.Framework.DescriptionAttribute("F1 create skill record with details")]
         [NUnit.Framework.CategoryAttribute("Skill")]
         [NUnit.Framework.TestCaseAttribute("Programming", null)]
         [NUnit.Framework.TestCaseAttribute("Writing", null)]
-        public virtual void CreateSkillRecordWithDetails(string skill, string[] exampleTags)
+        public virtual void F1CreateSkillRecordWithDetails(string skill, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Skill"};
@@ -583,8 +633,8 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("skill", skill);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("create skill record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 105
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("F1 create skill record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 120
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -604,16 +654,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 106
+#line 121
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 107
+#line 122
  testRunner.When("I navigate to skills Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 108
+#line 123
  testRunner.And(string.Format("I add new \'{0}\' record in skill module", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 109
+#line 124
  testRunner.Then(string.Format("the \'{0}\' record should be added successfully in skill module", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -621,11 +671,11 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("edit skill record with details")]
+        [NUnit.Framework.DescriptionAttribute("F2 edit skill record with details")]
         [NUnit.Framework.CategoryAttribute("Skill")]
         [NUnit.Framework.TestCaseAttribute("Automation Testing", null)]
         [NUnit.Framework.TestCaseAttribute("Swimming", null)]
-        public virtual void EditSkillRecordWithDetails(string skill, string[] exampleTags)
+        public virtual void F2EditSkillRecordWithDetails(string skill, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Skill"};
@@ -636,8 +686,8 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("skill", skill);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("edit skill record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 117
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("F2 edit skill record with details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 132
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -657,16 +707,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 118
+#line 133
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 119
+#line 134
  testRunner.When("I navigate to skills Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 120
+#line 135
  testRunner.And(string.Format("I update \'{0}\'on existing skill record", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 121
+#line 136
  testRunner.Then(string.Format("the skill record should have updated \'{0}\'", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -674,15 +724,15 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("delete existing skill record")]
+        [NUnit.Framework.DescriptionAttribute("F3 delete existing skill record")]
         [NUnit.Framework.CategoryAttribute("Skill")]
-        public virtual void DeleteExistingSkillRecord()
+        public virtual void F3DeleteExistingSkillRecord()
         {
             string[] tagsOfScenario = new string[] {
                     "Skill"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("delete existing skill record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 129
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("F3 delete existing skill record", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 144
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -702,16 +752,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 130
+#line 145
  testRunner.Given("I logged into Mars portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 131
+#line 146
  testRunner.When("I navigate to skills Module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 132
+#line 147
  testRunner.And("I delete existing skill record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 133
+#line 148
  testRunner.Then("the skill record should disappear from the skills module", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
