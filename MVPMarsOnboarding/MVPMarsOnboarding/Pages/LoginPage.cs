@@ -22,7 +22,6 @@ namespace MVPMarsOnboarding.Pages
 
             try
             {
-
                 //click on signin button
                 WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
 
