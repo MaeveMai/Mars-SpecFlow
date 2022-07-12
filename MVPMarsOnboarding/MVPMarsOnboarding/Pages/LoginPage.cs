@@ -12,7 +12,17 @@ namespace MVPMarsOnboarding.Pages
 {
     public class LoginPage
     {
-        public void LoginSteps(IWebDriver driver)
+        public IWebDriver driver;
+        LoginPage loginPageObj;
+
+
+        public LoginPage(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
+
+
+        public void LoginSteps()
         {
             //maximize the window
             driver.Manage().Window.Maximize();

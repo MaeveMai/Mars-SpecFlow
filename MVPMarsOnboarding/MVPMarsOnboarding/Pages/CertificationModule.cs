@@ -10,14 +10,23 @@ namespace MVPMarsOnboarding.Pages
 {
     public class CertificationModule
     {
-        public string GetNewCertificateName(IWebDriver driver)
+        public IWebDriver driver;
+        CertificationModule CertificationModuleObj;
+        ProfilePage profilePageObj;
+
+        public CertificationModule(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
+
+        public string GetNewCertificateName()
         {
             try
             {
                 //refresh the page
                 driver.Navigate().Refresh();
-                ProfilePage profilePageObj = new ProfilePage();
-                profilePageObj.GoToCertificationModule(driver);
+                profilePageObj = new ProfilePage(driver);
+                profilePageObj.GoToCertificationModule();
 
                 //Get New Certificate Name
                 WaitHelpers.WaitToBeVisible(driver, "XPath", "//div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]/tr/td[1]", 10);
@@ -32,7 +41,7 @@ namespace MVPMarsOnboarding.Pages
 
         }
 
-        public string GetNewCertifiedFrom(IWebDriver driver)
+        public string GetNewCertifiedFrom()
         {
             try
             {            
@@ -46,7 +55,7 @@ namespace MVPMarsOnboarding.Pages
             }
         }
 
-        public string GetNewCertifiedYear(IWebDriver driver)
+        public string GetNewCertifiedYear()
         {
             try
             {
@@ -59,7 +68,7 @@ namespace MVPMarsOnboarding.Pages
             }
         }
 
-        public void AddNewCertificate(IWebDriver driver, string CertificateName, string CertifiedFrom)
+        public void AddNewCertificate(string CertificateName, string CertifiedFrom)
         {
             //Click on add new button
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div", 10);
@@ -87,7 +96,7 @@ namespace MVPMarsOnboarding.Pages
             AddButton.Click();
         }
 
-        public void EditExistingCertificate(IWebDriver driver, string CertificateName, string CertifiedFrom)
+        public void EditExistingCertificate(string CertificateName, string CertifiedFrom)
         {
             //Click on the Edit button of the latest record in the Certificate module
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]/tr/td[4]/span[1]/i", 10);
@@ -111,7 +120,7 @@ namespace MVPMarsOnboarding.Pages
 
         }
 
-        public void DeleteExistingCertificate(IWebDriver driver)
+        public void DeleteExistingCertificate()
         {
 
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]/tr/td[4]/span[2]/i", 10);
