@@ -11,28 +11,21 @@ namespace MVPMarsOnboarding.StepDefinitions
     [Binding]
     public class LanguageModuleStepDefinition : CommonDriver
     {
-        ProfilePage profilePageObj;
         LoginPage loginPageObj;
         LanguageModule LanguageModuleObj;
 
         public LanguageModuleStepDefinition()
         {
             driver = new ChromeDriver();
-            profilePageObj = new ProfilePage(driver);
             loginPageObj = new LoginPage(driver);
             LanguageModuleObj = new LanguageModule(driver);
         }
 
 
 
-        
-
         [Given(@"I login to Mars portal successfully")]
         public void GivenILoggedIntoMarsPortalSuccessfully()
         {
-            //open chrom browser
-            //driver = new ChromeDriver();
-
             //log in mars portal
             loginPageObj.LoginSteps();
         }
@@ -41,7 +34,7 @@ namespace MVPMarsOnboarding.StepDefinitions
         [When(@"I navigate to language module")]
         public void WhenINavigateToLanguageModule()
         {
-            profilePageObj.GoToLanguageModule();
+            LanguageModuleObj.GoToLanguageModule();
         }
 
 
@@ -57,6 +50,7 @@ namespace MVPMarsOnboarding.StepDefinitions
             //Check if the language was created successful
             string NewLanguage = LanguageModuleObj.GetNewLanguage();
             Assert.That(NewLanguage == p0, "added language do not match");
+            driver.Close();
         }
 
 
@@ -72,6 +66,7 @@ namespace MVPMarsOnboarding.StepDefinitions
             //Check if the language was updated successful
             string NewLanguage = LanguageModuleObj.GetNewLanguage();
             Assert.That(NewLanguage == p0, "Updated language do not match");
+            driver.Close();
         }
 
         [When(@"I delete existing language record")]
@@ -86,15 +81,7 @@ namespace MVPMarsOnboarding.StepDefinitions
             //Check if the language was deleted successful
             String NewLanguage = LanguageModuleObj.GetNewLanguage();
             Assert.That(NewLanguage != "Japanese", "language should be deleted still existing");
-        }
-
-        [AfterScenario]
-        public void AfterScenario()
-        {
-            if (driver != null)
-            {
-                driver.Close();
-            }
+            driver.Close();
         }
 
     }

@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 namespace MVPMarsOnboarding.StepDefinitions
 {
     [Binding]
-    public class LoginStepDefinition:CommonDriver
+    public class LoginStepDefinition : CommonDriver
     {
 
         ProfilePage profilePageObj;
@@ -21,30 +21,21 @@ namespace MVPMarsOnboarding.StepDefinitions
             profilePageObj = new ProfilePage(driver);
         }
 
+
         [Given(@"I login mars portal")]
         public void GivenILoginMarsPortal()
         {
-
-            // log in steps
+            // log in step
             loginPageObj.LoginSteps();
         }
 
         [Then(@"The profile page should be presented")]
         public void ThenTheProfilePageShouldBePresented()
         {
-            //Check if the login was successful
             string HiUser = profilePageObj.GetHiUser();
             Assert.That(HiUser == "Hi Maeve" | HiUser == "Hi", "Hi User not match");
+            driver.Quit();
         }
 
-
-        [After]
-        public void AfterScenario()
-        {
-            if (driver != null)
-            {
-                driver.Close();
-            }
-        }
     }
 }

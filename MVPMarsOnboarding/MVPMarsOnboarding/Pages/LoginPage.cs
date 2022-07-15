@@ -13,13 +13,22 @@ namespace MVPMarsOnboarding.Pages
     public class LoginPage
     {
         public IWebDriver driver;
-        LoginPage loginPageObj;
-
 
         public LoginPage(IWebDriver driver)
         {
             this.driver = driver;
         }
+
+        //find element by XPath
+        private IWebElement SigninButton => driver.FindElement(By.XPath(SigninButtonXpath));
+        private IWebElement EmailAddressTextBox => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+        private IWebElement PasswordTextBox => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+        private IWebElement LoginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+
+
+        //String
+        private string SigninButtonXpath = "//*[@id='home']/div/div/div[1]/div/a";
+        private string PortalUrl = "http://localhost:5000";
 
 
         public void LoginSteps()
@@ -28,26 +37,21 @@ namespace MVPMarsOnboarding.Pages
             driver.Manage().Window.Maximize();
 
             //open mars portal
-            driver.Navigate().GoToUrl("http://localhost:5000");
+            driver.Navigate().GoToUrl(PortalUrl);
 
             try
             {
                 //click on signin button
-                WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
-
-                IWebElement SigninButton = driver.FindElement(By.XPath("//*[@id='home']/div/div/div[1]/div/a"));
+                WaitHelpers.WaitToBeClickable(driver, "XPath", SigninButtonXpath, 5);
                 SigninButton.Click();
 
                 //input email address
-                IWebElement EmailAddressTextBox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
                 EmailAddressTextBox.SendKeys("mvpstudiomaeve@gmail.com");
 
                 //input password
-                IWebElement PasswordTextBox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
                 PasswordTextBox.SendKeys("mvpstudioMaeve2022");
 
-                //click on login button
-                IWebElement LoginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+                //click on login button               
                 LoginButton.Click();
 
 

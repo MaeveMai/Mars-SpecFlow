@@ -10,33 +10,20 @@ namespace MVPMarsOnboarding.StepDefinitions
     [Binding]
     public class CertificateModuleStepDefinition : CommonDriver
     {
-
-        ProfilePage profilePageObj;
         LoginPage loginPageObj;
         CertificationModule certificationModuleObj;
 
         public CertificateModuleStepDefinition()
         {
             driver = new ChromeDriver();
-            loginPageObj = new LoginPage(driver);
-            profilePageObj = new ProfilePage(driver);
+            loginPageObj = new LoginPage(driver);           
             certificationModuleObj = new CertificationModule(driver);
         }
 
 
-        [AfterScenario]
-        public void AfterScenario()
-        {
-            if (driver != null)
-            {
-                driver.Close();
-            }
-        }
-
         [Given(@"I login to the Mars portal successfully")]
         public void GivenILoggedIntoMarsPortalSuccessfully()
         {
-
             //log in mars portal
             loginPageObj.LoginSteps();
         }
@@ -44,7 +31,7 @@ namespace MVPMarsOnboarding.StepDefinitions
         [When(@"I navigate to certification Module")]
         public void WhenINavigateToCertificationModule()
         {
-            profilePageObj.GoToCertificationModule();
+            certificationModuleObj.GoToCertificationModule();
         }
 
         [When(@"I add new certification record with '([^']*)' and '([^']*)'")]
@@ -64,6 +51,7 @@ namespace MVPMarsOnboarding.StepDefinitions
             Assert.That(NewCertificateName == p0, "New Certificate Name do not match");
             Assert.That(NewCertifiedFrom == p1, "New Certified from do not match");
             Assert.That(NewCertifiedYear == "2020", "New Certified Year do not match");
+            driver.Quit();
         }
 
         [When(@"I update '([^']*)' and '([^']*)' on existing certification record")]
@@ -83,6 +71,7 @@ namespace MVPMarsOnboarding.StepDefinitions
             Assert.That(NewCertificateName == p0, "updated Certificate Name do not match");
             Assert.That(NewCertifiedFrom == p1, "updated Certified from do not match");
             Assert.That(NewCertifiedYear == "2020", "updated Certified Year do not match");
+            driver.Quit();
         }
 
         [When(@"I delete existing certification record")]
@@ -100,6 +89,7 @@ namespace MVPMarsOnboarding.StepDefinitions
 
             Assert.That(NewCertificateName != "Best Tutors", "Certificate Name should be deleted still existing");
             Assert.That(NewCertifiedFrom != "University of Canterbury", "Certified From should be deleted still existing");
+            driver.Quit();
         }
         
     }

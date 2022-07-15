@@ -10,9 +10,32 @@ using System.Threading.Tasks;
 
 namespace MVPMarsOnboarding.Drivers
 {
+    
     public class CommonDriver
     {
-        public IWebDriver driver;
+        public static IWebDriver driver;
+        LoginPage loginpageObj = new LoginPage(driver);
+
+
+        [OneTimeSetUp]
+        public void oneTimeSetup()
+        {
+            //Open chrome browser
+            driver = new ChromeDriver();
+
+            //Login page object initialization and definition
+            loginpageObj.LoginSteps();
+
+        }
+
+
+        [OneTimeTearDown]
+        public void CloseTestRun()
+        {
+            // Open chrome browser
+            //driver = new ChromeDriver();
+            driver.Quit();
+        }
 
     }
 

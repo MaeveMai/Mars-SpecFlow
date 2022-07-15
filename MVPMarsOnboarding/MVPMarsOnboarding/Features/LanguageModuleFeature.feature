@@ -6,7 +6,7 @@ So that I can manage profile successfully and people seeking for my info can loo
 
 @Create
 Scenario Outline: 1 create language record with details
-	Given I login to Mars portal successfully
+	Given I login to Mars portal successfully 
 	When I navigate to language module
 	And I add new '<language>' records on lauguange module
 	Then the '<language>' records should be added in language module successfully

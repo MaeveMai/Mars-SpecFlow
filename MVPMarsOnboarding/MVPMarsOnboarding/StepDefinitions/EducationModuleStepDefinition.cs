@@ -9,34 +9,20 @@ namespace MVPMarsOnboarding.StepDefinitions
     [Binding]
     public class EducationModuleStepDefinition:CommonDriver
     {
-        ProfilePage profilePageObj;
         LoginPage loginPageObj;
         EducationModule educationModuleObj;
 
         public EducationModuleStepDefinition()
         {
             driver = new ChromeDriver();
-            profilePageObj = new ProfilePage(driver);
             loginPageObj = new LoginPage(driver);
             educationModuleObj = new EducationModule(driver);
         }
 
 
-        [AfterScenario]
-        public void AfterScenario()
-        {
-            if (driver != null)
-            {
-                driver.Close();
-            }
-        }
-
         [Given(@"I logged into the Mars portal successfully")]
         public void GivenILoggedIntoMarsPortalSuccessfully()
         {
-            //open chrom browser
-            //driver = new ChromeDriver();
-
             //log in mars portal
             loginPageObj.LoginSteps();
         }
@@ -44,7 +30,7 @@ namespace MVPMarsOnboarding.StepDefinitions
         [When(@"I navigate to education Module")]
         public void WhenINavigateToEducationModule()
         {
-            profilePageObj.GoToEducationModule();
+            educationModuleObj.GoToEducationModule();
         }
 
         [When(@"I add new education record with '([^']*)' and '([^']*)'")]
@@ -68,6 +54,7 @@ namespace MVPMarsOnboarding.StepDefinitions
             Assert.That(NewTitle == "PHD", "Actual title do not match");
             Assert.That(NewDegree == p1, "Actual degree do not match");
             Assert.That(NewGraduationYear == "2019", "Actual Graduation Year do not match");
+            driver.Close();
         }
 
         [When(@"I update '([^']*)' and '([^']*)' on existing education record")]
@@ -91,6 +78,7 @@ namespace MVPMarsOnboarding.StepDefinitions
             Assert.That(NewTitle == "PHD", "updated title do not match");
             Assert.That(NewDegree == p1, "updated degree do not match");
             Assert.That(NewGraduationYear == "2019", "updated Graduation Year do not match");
+            driver.Close();
         }
 
         [When(@"I delete existing education record")]
@@ -108,6 +96,7 @@ namespace MVPMarsOnboarding.StepDefinitions
 
             Assert.That(NewUniName != "The University of Auckland", "Universiyu name should be deleted still existing");
             Assert.That(NewDegree != "Master", "degree should be deleted still existing");
+            driver.Close();
         }    
     }
 }
