@@ -18,7 +18,7 @@ namespace MVPMarsOnboarding.Pages
             this.driver = driver;       
         }
 
-        private IWebElement HiUser => driver.FindElement(By.XPath("//div/div[1]/div[2]/div/span"));
+        private IWebElement HiUser => driver.FindElement(By.XPath(HiUserXpath));
         private string HiUserXpath = "//div/div[1]/div[2]/div/span";
 
         public string GetHiUser()

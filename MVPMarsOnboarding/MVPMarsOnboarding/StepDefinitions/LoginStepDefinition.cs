@@ -12,12 +12,9 @@ namespace MVPMarsOnboarding.StepDefinitions
     {
 
         ProfilePage profilePageObj;
-        LoginPage loginPageObj;
 
         public LoginStepDefinition()
         {
-            driver = new ChromeDriver();
-            loginPageObj = new LoginPage(driver);
             profilePageObj = new ProfilePage(driver);
         }
 
@@ -26,7 +23,7 @@ namespace MVPMarsOnboarding.StepDefinitions
         public void GivenILoginMarsPortal()
         {
             // log in step
-            loginPageObj.LoginSteps();
+            loginpageObj.LoginSteps();
         }
 
         [Then(@"The profile page should be presented")]
@@ -34,7 +31,6 @@ namespace MVPMarsOnboarding.StepDefinitions
         {
             string HiUser = profilePageObj.GetHiUser();
             Assert.That(HiUser == "Hi Maeve" | HiUser == "Hi", "Hi User not match");
-            driver.Quit();
         }
 
     }

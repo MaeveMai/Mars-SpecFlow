@@ -11,13 +11,10 @@ namespace MVPMarsOnboarding.StepDefinitions
     [Binding]
     public class LanguageModuleStepDefinition : CommonDriver
     {
-        LoginPage loginPageObj;
         LanguageModule LanguageModuleObj;
 
         public LanguageModuleStepDefinition()
         {
-            driver = new ChromeDriver();
-            loginPageObj = new LoginPage(driver);
             LanguageModuleObj = new LanguageModule(driver);
         }
 
@@ -27,7 +24,7 @@ namespace MVPMarsOnboarding.StepDefinitions
         public void GivenILoggedIntoMarsPortalSuccessfully()
         {
             //log in mars portal
-            loginPageObj.LoginSteps();
+            loginpageObj.LoginSteps();
         }
 
 
@@ -50,7 +47,6 @@ namespace MVPMarsOnboarding.StepDefinitions
             //Check if the language was created successful
             string NewLanguage = LanguageModuleObj.GetNewLanguage();
             Assert.That(NewLanguage == p0, "added language do not match");
-            driver.Close();
         }
 
 
@@ -66,7 +62,6 @@ namespace MVPMarsOnboarding.StepDefinitions
             //Check if the language was updated successful
             string NewLanguage = LanguageModuleObj.GetNewLanguage();
             Assert.That(NewLanguage == p0, "Updated language do not match");
-            driver.Close();
         }
 
         [When(@"I delete existing language record")]
@@ -81,7 +76,6 @@ namespace MVPMarsOnboarding.StepDefinitions
             //Check if the language was deleted successful
             String NewLanguage = LanguageModuleObj.GetNewLanguage();
             Assert.That(NewLanguage != "Japanese", "language should be deleted still existing");
-            driver.Close();
         }
 
     }
