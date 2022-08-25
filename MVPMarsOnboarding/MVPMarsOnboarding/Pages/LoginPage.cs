@@ -24,8 +24,7 @@ namespace MVPMarsOnboarding.Pages
         private IWebElement EmailAddressTextBox => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
         private IWebElement PasswordTextBox => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
         private IWebElement LoginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
-
-
+       
         //String
         private string SigninButtonXpath = "//*[@id='home']/div/div/div[1]/div/a";
         private string PortalUrl = "http://localhost:5000";
@@ -54,13 +53,12 @@ namespace MVPMarsOnboarding.Pages
                 //click on login button               
                 LoginButton.Click();
 
-
-            }
+        }
             catch (Exception ex)
             {
                 Assert.Fail("Portal does not launch.", ex.Message);
             }
-        }
+}
 
     }
 }

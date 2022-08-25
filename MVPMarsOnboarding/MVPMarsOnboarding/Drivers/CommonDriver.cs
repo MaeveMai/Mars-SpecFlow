@@ -7,37 +7,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechTalk.SpecFlow;
 
 namespace MVPMarsOnboarding.Drivers
 {
-    
+
+    [Binding]
     public class CommonDriver
     {
         public static IWebDriver driver;
-        LoginPage loginpageObj = new LoginPage(driver);
+        public static LoginPage loginpageObj;
 
+        public CommonDriver()
+        {
+            loginpageObj = new LoginPage(driver);
+        }
 
-        [OneTimeSetUp]
-        public void oneTimeSetup()
+        [BeforeScenario]
+        public static void oneTimeSetup()
         {
             //Open chrome browser
             driver = new ChromeDriver();
 
-            //Login page object initialization and definition
-            loginpageObj.LoginSteps();
-
         }
 
-
-        [OneTimeTearDown]
-        public void CloseTestRun()
+        [AfterScenario]
+        public static void CloseTestRun()
         {
-            // Open chrome browser
-            //driver = new ChromeDriver();
             driver.Quit();
         }
 
     }
-
 }
 
