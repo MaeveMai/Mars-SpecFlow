@@ -23,7 +23,7 @@ namespace MVPMarsOnboarding.Drivers
             loginpageObj = new LoginPage(driver);
         }
 
-        [BeforeTestRun]
+        [BeforeScenario]
         public static void oneTimeSetup()
         {
             //Open chrome browser
@@ -31,8 +31,7 @@ namespace MVPMarsOnboarding.Drivers
 
         }
 
-
-        [AfterTestRun]
+        [AfterScenario]
         public static void CloseTestRun()
         {
             driver.Quit();
